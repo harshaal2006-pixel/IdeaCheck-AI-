@@ -146,7 +146,8 @@ hr { border-color: rgba(255,255,255,0.07) !important; }
 #  FILES
 # ─────────────────────────────────────────
 USERS_FILE   = "users.json"
-HISTORY_FILE = "history.json"
+def get_history_file():
+    return f"{st.session_state.user}_history.json"
 
 # ─────────────────────────────────────────
 #  SESSION STATE
@@ -338,14 +339,18 @@ def generate_pdf(idea, tasks, score):
         return None
 
 def save_history(idea, tasks, score):
+
+    history_file = get_history_file()
+
     hist = []
-    if os.path.exists(HISTORY_FILE):
+
+    if os.path.exists(history_file):
         try:
-            with open(HISTORY_FILE) as f:
+            with open(history_file) as f:
                 hist = json.load(f)
         except:
             hist = []
-    
+
     hist.append({
         "idea": idea,
         "score": score,
@@ -353,8 +358,8 @@ def save_history(idea, tasks, score):
         "date": datetime.now().strftime("%d %b %Y, %I:%M %p"),
         "tasks": tasks,
     })
-    
-    with open(HISTORY_FILE, "w") as f:
+
+    with open(history_file, "w") as f:
         json.dump(hist, f, indent=2)
 
 @st.cache_data
@@ -368,13 +373,17 @@ def load_history_cached():
     return []
 
 def load_history():
-    """Non-cached wrapper to always get fresh history"""
-    if os.path.exists(HISTORY_FILE):
+    """Load only current user's history"""
+
+    history_file = get_history_file()
+
+    if os.path.exists(history_file):
         try:
-            with open(HISTORY_FILE) as f:
+            with open(history_file) as f:
                 return json.load(f)
         except:
             return []
+
     return []
 
 # ─────────────────────────────────────────
@@ -722,8 +731,10 @@ elif st.session_state.page == "history":
         st.markdown(f"<p style='color:#9090a8;font-size:13px'>{len(filtered)} result(s)</p>", unsafe_allow_html=True)
 
         if st.button("🗑️ Clear History", key="clear_history_btn"):
-            if os.path.exists(HISTORY_FILE):
-                os.remove(HISTORY_FILE)
+            history_file = get_history_file()
+
+            if os.path.exists(history_file):
+            os.remove(history_file)
             st.success("Cleared!")
             st.rerun()
 
