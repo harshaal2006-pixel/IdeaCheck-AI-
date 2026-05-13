@@ -734,10 +734,10 @@ elif st.session_state.page == "history":
             history_file = get_history_file()
 
             if os.path.exists(history_file):
-                os.remove(history_file)
+                 os.remove(history_file)
+
             st.success("Cleared!")
             st.rerun()
-
         for idx, item in enumerate(filtered):
             sc    = item.get("score", 0)
             lbl   = item.get("label", score_label(sc)[0])
