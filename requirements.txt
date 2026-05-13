@@ -1,7 +1,7 @@
 streamlit==1.56.0
-python-dotenv==1.2.2
+python-dotenv==1.1.1
 requests==2.33.1
 fpdf2==2.8.7
 crewai==1.14.1
 anthropic==0.94.0
-python==3.11.9
+
