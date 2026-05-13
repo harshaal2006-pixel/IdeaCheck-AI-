@@ -734,7 +734,7 @@ elif st.session_state.page == "history":
             history_file = get_history_file()
 
             if os.path.exists(history_file):
-            os.remove(history_file)
+                os.remove(history_file)
             st.success("Cleared!")
             st.rerun()
 
