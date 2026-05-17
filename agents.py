@@ -16,7 +16,7 @@ llm = LLM(
     api_key=openrouter_key,
     base_url="https://openrouter.ai/api/v1",
     provider="openrouter",    # 🔥 force CrewAI to use OpenRouter, not OpenAI
-    max_tokens=2000   # ✅ safe limit
+    max_tokens=500   # ✅ safe limit
 )
 
 problem_agent = Agent(
