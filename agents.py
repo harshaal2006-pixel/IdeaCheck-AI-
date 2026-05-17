@@ -12,7 +12,7 @@ if not openrouter_key:
     raise ValueError("OPENROUTER_API_KEY not found. Please set it in .env or Streamlit secrets.")
 
 llm = LLM(
-    model="meta-llama/llama-4-maverick",
+    model="openrouter/deepseek/deepseek-chat-v3-0324:free",
     api_key=openrouter_key,
     base_url="https://openrouter.ai/api/v1",
     provider="openrouter",    # 🔥 force CrewAI to use OpenRouter, not OpenAI
