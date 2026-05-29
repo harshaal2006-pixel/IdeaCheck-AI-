@@ -3,5 +3,6 @@ python-dotenv==1.1.1
 requests==2.33.1
 fpdf2==2.8.7
 crewai==1.14.1
+litellm
 anthropic==0.94.0
 
