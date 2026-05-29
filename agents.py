@@ -6,7 +6,7 @@ import streamlit as st
 load_dotenv()
 
 nvidia_key = os.getenv("NVIDIA_API_KEY") or st.secrets.get("NVIDIA_API_KEY")
-print("DEBUG KEY:", openrouter_key)
+print("DEBUG KEY:", nvidia_key)
 
 if not nvidia_key:
     raise ValueError("NVIDIA_API_KEY not found. Please set it in .env or Streamlit secrets.")
