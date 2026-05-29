@@ -5,17 +5,16 @@ import streamlit as st
 
 load_dotenv()
 
-openrouter_key = os.getenv("OPENROUTER_API_KEY") or st.secrets.get("OPENROUTER_API_KEY")
+openrouter_key = os.getenv("NVIDIA_API_KEY") or st.secrets.get("OPENROUTER_API_KEY")
 print("DEBUG KEY:", openrouter_key)
 
 if not openrouter_key:
-    raise ValueError("OPENROUTER_API_KEY not found. Please set it in .env or Streamlit secrets.")
+    raise ValueError("NVIDIA_API_KEY not found. Please set it in .env or Streamlit secrets.")
 
 llm = LLM(
-    model="openrouter/deepseek/deepseek-chat-v3-0324:free",
-    api_key=openrouter_key,
-    base_url="https://openrouter.ai/api/v1",
-    provider="openrouter",    # 🔥 force CrewAI to use OpenRouter, not OpenAI
+    model="qwen/qwen3-coder-480b-a35b-instruct",
+    api_key=nvidia_api_key,
+    base_url="https://integrate.api.nvidia.com/v1",
     max_tokens=500   # ✅ safe limit
 )
 
