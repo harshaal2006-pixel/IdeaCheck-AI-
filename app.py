@@ -19,7 +19,7 @@ from tasks import create_tasks
 #  ENV & PAGE CONFIG
 # ─────────────────────────────────────────
 load_dotenv()
-API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+API_KEY = os.getenv("NVIDIA_API_KEY", "")
 
 st.set_page_config(
     page_title="IdeaCheck AI",
