@@ -5,10 +5,10 @@ import streamlit as st
 
 load_dotenv()
 
-nvidia_key = os.getenv("NVIDIA_API_KEY") or st.secrets.get("NVIDIA_API_KEY")
-print("DEBUG KEY:", nvidia_key)
+nvidia_api_key = os.getenv("NVIDIA_API_KEY") or st.secrets.get("NVIDIA_API_KEY")
+print("DEBUG KEY:", nvidia_api_key)
 
-if not nvidia_key:
+if not nvidia_api_key:
     raise ValueError("NVIDIA_API_KEY not found. Please set it in .env or Streamlit secrets.")
 
 llm = LLM(
