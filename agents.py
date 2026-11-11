@@ -12,10 +12,10 @@ if not nvidia_api_key:
     raise ValueError("NVIDIA_API_KEY not found. Please set it in .env or Streamlit secrets.")
 
 llm = LLM(
-    model="openai/qwen/qwen3-coder-480b-a35b-instruct",
+    model="openai/nvidia/nemotron-3.5-super-vl-120b-a12b",
     api_key=nvidia_api_key,
     base_url="https://integrate.api.nvidia.com/v1",
-    max_tokens=500   # ✅ safe limit
+    max_tokens=4096
 )
 
 problem_agent = Agent(
